@@ -64,11 +64,13 @@ pip install -r requirements.txt
 
 ## Project Structure
 
+```plaintext
 ├── Dataset
 │   └── superstore_train.csv  # The sales dataset
 ├── your_script.py            # The main Python script for data loading
 ├── requirements.txt          # Required libraries for the project
 ├── README.md                 # Project documentation
+
 
 
 
