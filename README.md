@@ -1,51 +1,60 @@
-# Superstore Sales Analysis
+# Superstore Sales Time Series Analysis using SQL
 
-This project is designed to load a dataset containing superstore sales data, process it using Python's `pandas` library, and connect to a database using `SQLAlchemy` for further analysis and manipulation.
+This project involves performing time series analysis on a superstore sales dataset using SQL queries. The primary goal is to analyze sales trends, evaluate moving averages, and examine day-to-day patterns using SQL window functions. Python’s `pandas` library is used for initial data loading, while `SQLAlchemy` helps connect to the database for executing the SQL queries.
 
 ## Table of Contents
 1. [Project Overview](#project-overview)
 2. [Dataset](#dataset)
 3. [Installation](#installation)
 4. [Usage](#usage)
-5. [Project Structure](#project-structure)
-6. [Requirements](#requirements)
-7. [Contact](#contact)
+5. [SQL Analysis](#sql-analysis)
+6. [Project Structure](#project-structure)
+7. [Requirements](#requirements)
+8. [Contact](#contact)
 
 ## Project Overview
-This project provides basic data loading and database connection functionality. The dataset is loaded using `pandas`, and `SQLAlchemy` is used to establish a connection to a database for potential storage and further analysis.
+This project performs time series analysis on superstore sales data using SQL. Key tasks include:
+
+- Calculating the sales for the next and previous rows using window functions.
+- Ranking sales data in descending order.
+- Aggregating and calculating monthly and daily sales averages.
+- Analyzing discounts over consecutive days.
+- Evaluating moving averages using SQL.
+
+The analysis is facilitated using SQL queries executed on a PostgreSQL database. Python is used for data loading and database connection setup.
 
 ## Dataset
-The dataset is assumed to be a CSV file named `superstore_train.csv`, located in the `Dataset` directory. This file contains sales data, including various fields related to transactions, such as sales, order date, discounts, and more.
+The dataset used for this project is `superstore_train.csv`, which contains detailed sales records, including fields such as sales, order date, and discount information. The dataset should be located in the `Dataset` directory.
 
 ## Installation
-To set up the project, you need to install the required Python libraries specified in the `requirements.txt` file. Use the following steps:
+To set up the project, follow these steps:
 
 1. Clone the repository or download the project files.
 2. Navigate to the project directory.
-3. Install the dependencies using:
+3. Install the required libraries by running:
 
     ```bash
     pip install -r requirements.txt
     ```
 
-## Usage
-After setting up the environment, you can run the Python script to load the dataset and establish a database connection. Here’s an example of how to use the script:
+4. Ensure you have PostgreSQL or any other database supported by SQLAlchemy set up.
 
+## Usage
 1. Place the `superstore_train.csv` dataset in the `Dataset` directory.
-2. Modify the script to configure your database connection (if needed).
-3. Run the script:
+2. Open the Python script and configure the database connection details.
+3. Run the Python script to load the dataset and establish a connection to the SQL database.
 
     ```bash
     python your_script.py
     ```
 
-The script will load the dataset into a `pandas` DataFrame and prepare it for database operations using SQLAlchemy.
+4. Once the data is loaded, you can execute SQL queries for time series analysis, such as calculating moving averages, using window functions, and other time-based analyses.
 
-## Project Structure
+## SQL Analysis
+The SQL queries used for analysis include:
 
-```plaintext
-├── Dataset
-│   └── superstore_train.csv  # The sales dataset
-├── your_script.py            # The main Python script
-├── requirements.txt          # Required libraries for the project
-├── README.md                 # Project documentation
+1. **Lead and Lag Functions**: Used to calculate the sales for the next and previous rows.
+   
+   ```sql
+   LEAD(Sales, 1) OVER (ORDER BY "order_date") AS sales_next;
+   LAG(Sales, 1) OVER (ORDER BY "order_date") AS sales_previous;
