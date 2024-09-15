@@ -54,7 +54,6 @@ The project uses the following libraries:
 
 - `pandas==2.0.3`
 - `SQLAlchemy==2.0.20`
-- `psycopg2==2.9.7` (for PostgreSQL connection)
 
 Install the dependencies using:
 
