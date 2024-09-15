@@ -7,10 +7,8 @@ This project involves performing time series analysis on a superstore sales data
 2. [Dataset](#dataset)
 3. [Installation](#installation)
 4. [Usage](#usage)
-5. [SQL Analysis](#sql-analysis)
+5. [Requirements](#requirements)
 6. [Project Structure](#project-structure)
-7. [Requirements](#requirements)
-8. [Contact](#contact)
 
 ## Project Overview
 This project performs time series analysis on superstore sales data using SQL. Key tasks include:
@@ -50,11 +48,28 @@ To set up the project, follow these steps:
 
 4. Once the data is loaded, you can execute SQL queries for time series analysis, such as calculating moving averages, using window functions, and other time-based analyses.
 
-## SQL Analysis
-The SQL queries used for analysis include:
+## Requirements
 
-1. **Lead and Lag Functions**: Used to calculate the sales for the next and previous rows.
-   
-   ```sql
-   LEAD(Sales, 1) OVER (ORDER BY "order_date") AS sales_next;
-   LAG(Sales, 1) OVER (ORDER BY "order_date") AS sales_previous;
+The project uses the following libraries:
+
+- `pandas==2.0.3`
+- `SQLAlchemy==2.0.20`
+- `psycopg2==2.9.7` (for PostgreSQL connection)
+
+Install the dependencies using:
+
+```bash
+pip install -r requirements.txt
+```
+
+## Project Structure
+
+├── Dataset
+│   └── superstore_train.csv  # The sales dataset
+├── your_script.py            # The main Python script for data loading
+├── requirements.txt          # Required libraries for the project
+├── README.md                 # Project documentation
+
+
+
+
